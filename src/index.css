@@ -110,11 +110,11 @@
   }
 
   .section-title {
-    @apply text-2xl sm:text-3xl font-medium text-efficiency-900 mb-6;
+    @apply text-2xl sm:text-3xl font-medium text-gray-900 mb-6;
   }
   
   .subsection-title {
-    @apply text-xl font-medium text-efficiency-800 mb-4;
+    @apply text-xl font-medium text-gray-800 mb-4;
   }
 
   .fade-in {
@@ -180,19 +180,19 @@
 }
 
 .form-label {
-  @apply block text-sm font-medium text-efficiency-800 mb-1;
+  @apply block text-sm font-medium text-gray-800 mb-1;
 }
 
 .form-input {
-  @apply w-full px-3 py-2 border border-efficiency-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition duration-200;
+  @apply w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition duration-200;
 }
 
 .form-textarea {
-  @apply w-full px-3 py-2 border border-efficiency-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition duration-200 min-h-[100px];
+  @apply w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition duration-200 min-h-[100px];
 }
 
 .form-select {
-  @apply w-full px-3 py-2 border border-efficiency-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition duration-200;
+  @apply w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition duration-200;
 }
 
 /* Utility classes for button variations */
@@ -205,7 +205,7 @@
 }
 
 .btn-secondary {
-  @apply btn bg-white text-efficiency-800 border-efficiency-200 hover:bg-efficiency-50 focus:ring-efficiency-500;
+  @apply btn bg-white text-gray-800 border-gray-200 hover:bg-gray-50 focus:ring-gray-500;
 }
 
 .btn-success {
@@ -217,11 +217,11 @@
 }
 
 .btn-outline {
-  @apply btn bg-transparent border border-efficiency-200 text-efficiency-800 hover:bg-efficiency-50;
+  @apply btn bg-transparent border border-gray-200 text-gray-800 hover:bg-gray-50;
 }
 
 .btn-ghost {
-  @apply btn bg-transparent shadow-none hover:bg-efficiency-100 text-efficiency-800;
+  @apply btn bg-transparent shadow-none hover:bg-gray-100 text-gray-800;
 }
 
 .btn-icon {
@@ -239,15 +239,15 @@
 }
 
 .stat-title {
-  @apply text-sm font-medium text-efficiency-600 mb-1;
+  @apply text-sm font-medium text-gray-600 mb-1;
 }
 
 .stat-value {
-  @apply text-3xl font-semibold text-efficiency-900;
+  @apply text-3xl font-semibold text-gray-900;
 }
 
 .stat-description {
-  @apply mt-2 text-sm text-efficiency-600;
+  @apply mt-2 text-sm text-gray-600;
 }
 
 /* Recommendation card */
@@ -256,11 +256,11 @@
 }
 
 .recommendation-title {
-  @apply text-lg font-medium text-efficiency-900 mb-2;
+  @apply text-lg font-medium text-gray-900 mb-2;
 }
 
 .recommendation-content {
-  @apply text-sm text-efficiency-700;
+  @apply text-sm text-gray-700;
 }
 
 /* Scrollbar styling */

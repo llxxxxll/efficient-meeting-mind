@@ -10,7 +10,6 @@ import {
   Calendar,
   TrendingUp,
   TrendingDown,
-  Percent,
 } from "lucide-react";
 
 const DashboardStats = () => {
@@ -57,7 +56,7 @@ const DashboardStats = () => {
 
   // Helper function to determine trend colors
   const getTrendColor = (trend: "up" | "down" | "neutral", metric: "duration" | "goal" | "participants") => {
-    if (trend === "neutral") return "text-efficiency-500";
+    if (trend === "neutral") return "text-gray-500";
     
     // For duration, down is good
     if (metric === "duration") {
@@ -74,7 +73,7 @@ const DashboardStats = () => {
       return trend === "down" ? "text-green-500" : "text-amber-500";
     }
     
-    return "text-efficiency-500";
+    return "text-gray-500";
   };
 
   const getTrendIcon = (trend: "up" | "down" | "neutral", metric: string) => {
@@ -112,10 +111,10 @@ const DashboardStats = () => {
 
   if (meetings.length === 0) {
     return (
-      <div className="text-center py-12 bg-white rounded-xl border border-efficiency-100 shadow-sm">
-        <Clock className="mx-auto h-12 w-12 text-efficiency-300" />
-        <h3 className="mt-4 text-lg font-medium text-efficiency-900">No Meeting Data</h3>
-        <p className="mt-2 text-efficiency-600 max-w-sm mx-auto">
+      <div className="text-center py-12 bg-white rounded-xl border border-gray-100 shadow-sm">
+        <Clock className="mx-auto h-12 w-12 text-gray-300" />
+        <h3 className="mt-4 text-lg font-medium text-gray-900">No Meeting Data</h3>
+        <p className="mt-2 text-gray-600 max-w-sm mx-auto">
           Record your meetings to see statistics and insights.
         </p>
       </div>
@@ -136,7 +135,7 @@ const DashboardStats = () => {
         </div>
         <div className="flex items-center">
           <span className="stat-value">{stats.averageDuration}</span>
-          <span className="text-sm text-efficiency-600 ml-1">minutes</span>
+          <span className="text-sm text-gray-600 ml-1">minutes</span>
           {getTrendIcon(durationTrend, "duration")}
         </div>
         <p className="stat-description">
@@ -155,7 +154,7 @@ const DashboardStats = () => {
         </div>
         <div className="flex items-center">
           <span className="stat-value">{stats.goalAchievementRate}</span>
-          <span className="text-sm text-efficiency-600 ml-1">%</span>
+          <span className="text-sm text-gray-600 ml-1">%</span>
           {getTrendIcon(goalTrend, "goal")}
         </div>
         <p className="stat-description">
@@ -174,7 +173,7 @@ const DashboardStats = () => {
         </div>
         <div className="flex items-center">
           <span className="stat-value">{stats.averageParticipants}</span>
-          <span className="text-sm text-efficiency-600 ml-1">people</span>
+          <span className="text-sm text-gray-600 ml-1">people</span>
           {getTrendIcon(participantsTrend, "participants")}
         </div>
         <p className="stat-description">
@@ -193,7 +192,7 @@ const DashboardStats = () => {
         </div>
         <div className="flex items-center">
           <span className="stat-value">{stats.totalMeetings}</span>
-          <span className="text-sm text-efficiency-600 ml-1">recorded</span>
+          <span className="text-sm text-gray-600 ml-1">recorded</span>
         </div>
         <p className="stat-description">
           Since you started tracking

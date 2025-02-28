@@ -56,7 +56,7 @@ const NavBar = () => {
                   className={`px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 flex items-center gap-2 ${
                     isActive(item.path)
                       ? "text-primary bg-primary/5"
-                      : "text-efficiency-600 hover:text-primary hover:bg-primary/5"
+                      : "text-gray-600 hover:text-primary hover:bg-primary/5"
                   }`}
                 >
                   {item.icon}
@@ -70,7 +70,7 @@ const NavBar = () => {
           <div className="flex items-center sm:hidden">
             <button
               onClick={toggleMenu}
-              className="inline-flex items-center justify-center p-2 rounded-md text-efficiency-500 hover:text-efficiency-900 hover:bg-efficiency-100 focus:outline-none"
+              className="inline-flex items-center justify-center p-2 rounded-md text-gray-500 hover:text-gray-900 hover:bg-gray-100 focus:outline-none"
               aria-expanded="false"
             >
               <span className="sr-only">Open main menu</span>
@@ -102,7 +102,7 @@ const NavBar = () => {
                   className={`block px-3 py-2 rounded-md text-base font-medium flex items-center gap-2 ${
                     isActive(item.path)
                       ? "text-primary bg-primary/5"
-                      : "text-efficiency-600 hover:text-primary hover:bg-primary/5"
+                      : "text-gray-600 hover:text-primary hover:bg-primary/5"
                   }`}
                   onClick={() => setIsOpen(false)}
                 >
