@@ -57,21 +57,7 @@ const RecommendationCard: React.FC<RecommendationCardProps> = ({ recommendation,
   const shimmerStyle = {
     background: "linear-gradient(110deg, transparent 25%, rgba(255, 255, 255, 0.1) 35%, transparent 45%)",
     backgroundSize: "200% 100%",
-    animation: "shimmer 8s linear infinite"
-  };
-
-  // Slow pulse animation
-  const pulseVariants = {
-    initial: { scale: 1 },
-    animate: { 
-      scale: [1, 1.03, 1],
-      transition: { 
-        duration: 6,
-        ease: "easeInOut",
-        repeat: Infinity,
-        repeatType: "mirror"
-      }
-    }
+    animation: "shimmer 20s linear infinite"
   };
 
   return (
@@ -86,9 +72,16 @@ const RecommendationCard: React.FC<RecommendationCardProps> = ({ recommendation,
       <div className="flex items-start">
         <motion.div 
           className="mt-0.5 p-2 rounded-full bg-primary/10 text-primary"
-          variants={pulseVariants}
-          initial="initial"
-          animate="animate"
+          initial={{ scale: 1 }}
+          animate={{ 
+            scale: [1, 1.03, 1],
+            transition: { 
+              duration: 6,
+              ease: "easeInOut",
+              repeat: Infinity,
+              repeatType: "mirror" 
+            }
+          }}
         >
           {getIcon()}
         </motion.div>
