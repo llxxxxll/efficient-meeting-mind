@@ -135,12 +135,20 @@ const MeetingForm = () => {
       return;
     }
     
-    // Update the topics with the valid ones
+    // Explicitly cast data as the required type by ensuring all required fields are present
     const meetingData = {
-      ...data,
-      topics: validTopics,
+      date: data.date,
+      duration: data.duration,
+      participants: data.participants,
+      goalAchieved: data.goalAchieved,
+      topics: validTopics.map(topic => ({
+        id: topic.id,
+        name: topic.name,
+        duration: topic.duration
+      }))
     };
     
+    // Now addMeeting with the properly typed data
     addMeeting(meetingData);
     
     toast({
