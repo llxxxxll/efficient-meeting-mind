@@ -12,25 +12,27 @@ import {
 
 const NavBar = () => {
   const location = useLocation();
-  const [isDarkMode, setIsDarkMode] = useState(() => {
-    // Check if user has a saved preference
-    const savedTheme = localStorage.getItem("theme");
-    // Check if system preference is dark
-    const systemPreference = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    
-    return savedTheme === "dark" || (!savedTheme && systemPreference);
-  });
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
-  // Apply theme class to document body
+  // Initialize dark mode state based on document class on mount
   useEffect(() => {
-    if (isDarkMode) {
+    const isDark = document.documentElement.classList.contains("dark");
+    setIsDarkMode(isDark);
+  }, []);
+
+  // Toggle dark mode
+  const toggleDarkMode = () => {
+    const newDarkMode = !isDarkMode;
+    setIsDarkMode(newDarkMode);
+    
+    if (newDarkMode) {
       document.documentElement.classList.add("dark");
       localStorage.setItem("theme", "dark");
     } else {
       document.documentElement.classList.remove("dark");
       localStorage.setItem("theme", "light");
     }
-  }, [isDarkMode]);
+  };
 
   return (
     <nav className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
@@ -51,7 +53,7 @@ const NavBar = () => {
                   <Button 
                     variant="ghost" 
                     size="icon" 
-                    onClick={() => setIsDarkMode(!isDarkMode)}
+                    onClick={toggleDarkMode}
                     className="hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
                     {isDarkMode ? (
