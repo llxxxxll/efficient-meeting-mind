@@ -53,6 +53,27 @@ const RecommendationCard: React.FC<RecommendationCardProps> = ({ recommendation,
     }
   };
 
+  // Slow shimmer animation
+  const shimmerStyle = {
+    background: "linear-gradient(110deg, transparent 25%, rgba(255, 255, 255, 0.1) 35%, transparent 45%)",
+    backgroundSize: "200% 100%",
+    animation: "shimmer 8s linear infinite"
+  };
+
+  // Slow pulse animation
+  const pulseVariants = {
+    initial: { scale: 1 },
+    animate: { 
+      scale: [1, 1.03, 1],
+      transition: { 
+        duration: 6,
+        ease: "easeInOut",
+        repeat: Infinity,
+        repeatType: "mirror"
+      }
+    }
+  };
+
   return (
     <motion.div
       className="recommendation-card"
@@ -60,11 +81,17 @@ const RecommendationCard: React.FC<RecommendationCardProps> = ({ recommendation,
       initial="hidden"
       animate="visible"
       whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
+      style={shimmerStyle}
     >
       <div className="flex items-start">
-        <div className="mt-0.5 p-2 rounded-full bg-primary/10 text-primary">
+        <motion.div 
+          className="mt-0.5 p-2 rounded-full bg-primary/10 text-primary"
+          variants={pulseVariants}
+          initial="initial"
+          animate="animate"
+        >
           {getIcon()}
-        </div>
+        </motion.div>
         <div className="ml-4 flex-1">
           <div className="flex items-center justify-between mb-2">
             <h3 className="recommendation-title">{recommendation.title}</h3>
