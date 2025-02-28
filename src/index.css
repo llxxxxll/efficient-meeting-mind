@@ -74,7 +74,7 @@
   }
 
   body {
-    @apply bg-secondary-gray text-text-dark antialiased;
+    @apply bg-secondary-gray text-text-dark dark:bg-background dark:text-foreground antialiased;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-family: 'Open Sans', Helvetica, sans-serif;
@@ -92,7 +92,7 @@
 
 @layer components {
   .glass-card {
-    @apply bg-white shadow-card rounded-xl transition-all duration-300 ease-in-out border border-gray-100;
+    @apply bg-white dark:bg-card shadow-card rounded-xl transition-all duration-300 ease-in-out border border-gray-100 dark:border-gray-700;
   }
   
   .glass-card:hover {
@@ -108,11 +108,11 @@
   }
 
   .section-title {
-    @apply text-2xl sm:text-3xl font-bold text-primary-blue mb-6;
+    @apply text-2xl sm:text-3xl font-bold text-primary-blue dark:text-primary-foreground mb-6;
   }
   
   .subsection-title {
-    @apply text-xl font-bold text-primary-blue mb-4;
+    @apply text-xl font-bold text-primary-blue dark:text-primary-foreground mb-4;
   }
 
   .fade-in {
@@ -178,19 +178,19 @@
 }
 
 .form-label {
-  @apply block text-sm font-medium text-text-dark mb-1;
+  @apply block text-sm font-medium text-text-dark dark:text-foreground mb-1;
 }
 
 .form-input {
-  @apply w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-blue focus:border-transparent transition duration-200;
+  @apply w-full px-3 py-2 border border-gray-200 dark:border-gray-700 bg-white dark:bg-input rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-blue dark:focus:ring-primary focus:border-transparent transition duration-200;
 }
 
 .form-textarea {
-  @apply w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-blue focus:border-transparent transition duration-200 min-h-[100px];
+  @apply w-full px-3 py-2 border border-gray-200 dark:border-gray-700 bg-white dark:bg-input rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-blue dark:focus:ring-primary focus:border-transparent transition duration-200 min-h-[100px];
 }
 
 .form-select {
-  @apply w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-blue focus:border-transparent transition duration-200;
+  @apply w-full px-3 py-2 border border-gray-200 dark:border-gray-700 bg-white dark:bg-input rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-blue dark:focus:ring-primary focus:border-transparent transition duration-200;
 }
 
 /* Utility classes for button variations */
@@ -199,11 +199,11 @@
 }
 
 .btn-primary {
-  @apply btn bg-primary-blue text-white hover:bg-primary-blue/90 focus:ring-primary-blue;
+  @apply btn bg-primary-blue dark:bg-primary text-white hover:bg-primary-blue/90 dark:hover:bg-primary/90 focus:ring-primary-blue dark:focus:ring-primary;
 }
 
 .btn-secondary {
-  @apply btn bg-white text-text-dark border-gray-200 hover:bg-gray-50 focus:ring-gray-500;
+  @apply btn bg-white dark:bg-card text-text-dark dark:text-card-foreground border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 focus:ring-gray-500;
 }
 
 .btn-success {
@@ -215,20 +215,20 @@
 }
 
 .btn-outline {
-  @apply btn bg-transparent border border-gray-200 text-text-dark hover:bg-gray-50;
+  @apply btn bg-transparent border border-gray-200 dark:border-gray-700 text-text-dark dark:text-foreground hover:bg-gray-50 dark:hover:bg-gray-700;
 }
 
 .btn-ghost {
-  @apply btn bg-transparent shadow-none hover:bg-gray-100 text-text-dark;
+  @apply btn bg-transparent shadow-none hover:bg-gray-100 dark:hover:bg-gray-700 text-text-dark dark:text-foreground;
 }
 
 .btn-icon {
-  @apply p-2 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-blue transition-colors duration-200 inline-flex items-center justify-center;
+  @apply p-2 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-blue dark:focus:ring-primary transition-colors duration-200 inline-flex items-center justify-center;
 }
 
 /* Chart container styles */
 .chart-container {
-  @apply bg-white rounded-xl p-4 shadow-card transition duration-300 hover:shadow-card-hover;
+  @apply bg-white dark:bg-card rounded-xl p-4 shadow-card transition duration-300 hover:shadow-card-hover;
 }
 
 /* Stats card */
@@ -237,15 +237,15 @@
 }
 
 .stat-title {
-  @apply text-sm font-medium text-gray-600 mb-1;
+  @apply text-sm font-medium text-gray-600 dark:text-gray-300 mb-1;
 }
 
 .stat-value {
-  @apply text-3xl font-semibold text-primary-blue;
+  @apply text-3xl font-semibold text-primary-blue dark:text-primary-foreground;
 }
 
 .stat-description {
-  @apply mt-2 text-sm text-gray-600;
+  @apply mt-2 text-sm text-gray-600 dark:text-gray-300;
 }
 
 /* Recommendation card */
@@ -254,24 +254,24 @@
 }
 
 .recommendation-title {
-  @apply text-lg font-medium text-primary-blue mb-2;
+  @apply text-lg font-medium text-primary-blue dark:text-primary-foreground mb-2;
 }
 
 .recommendation-content {
-  @apply text-sm text-text-dark;
+  @apply text-sm text-text-dark dark:text-foreground;
 }
 
 /* Alert styles */
 .alert-success {
-  @apply bg-accent-green/10 text-accent-green border border-accent-green/20 rounded-lg px-4 py-3;
+  @apply bg-accent-green/10 text-accent-green border border-accent-green/20 dark:border-accent-green/40 rounded-lg px-4 py-3;
 }
 
 .alert-warning {
-  @apply bg-warning-orange/10 text-warning-orange border border-warning-orange/20 rounded-lg px-4 py-3;
+  @apply bg-warning-orange/10 text-warning-orange border border-warning-orange/20 dark:border-warning-orange/40 rounded-lg px-4 py-3;
 }
 
 .alert-error {
-  @apply bg-red-100 text-red-700 border border-red-200 rounded-lg px-4 py-3;
+  @apply bg-red-100 dark:bg-red-900/20 text-red-700 dark:text-red-400 border border-red-200 dark:border-red-800/30 rounded-lg px-4 py-3;
 }
 
 /* Scrollbar styling */
@@ -291,4 +291,12 @@
 
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(0, 0, 0, 0.3);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
 }

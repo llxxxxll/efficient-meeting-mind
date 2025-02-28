@@ -55,12 +55,12 @@ const Dashboard = () => {
             
             <Dialog>
               <DialogTrigger asChild>
-                <Button variant="outline" className="border-red-300 text-red-500 hover:bg-red-50">
+                <Button variant="outline" className="border-red-300 dark:border-red-700/50 text-red-500 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20">
                   <Trash2 className="mr-2 h-4 w-4" />
                   Reset Data
                 </Button>
               </DialogTrigger>
-              <DialogContent className="sm:max-w-md">
+              <DialogContent className="sm:max-w-md dark:bg-card">
                 <DialogHeader>
                   <DialogTitle>Reset Meeting Data</DialogTitle>
                   <DialogDescription>
@@ -129,9 +129,9 @@ const Dashboard = () => {
         )}
 
         {meetings.length === 0 && (
-          <div className="mt-8 text-center py-12 bg-white rounded-xl border border-gray-100 shadow-sm">
-            <h3 className="text-lg font-medium text-gray-900 mb-2">No meetings recorded yet</h3>
-            <p className="text-gray-600 mb-6">
+          <div className="mt-8 text-center py-12 bg-white dark:bg-card rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm">
+            <h3 className="text-lg font-medium text-gray-900 dark:text-gray-100 mb-2">No meetings recorded yet</h3>
+            <p className="text-gray-600 dark:text-gray-300 mb-6">
               Record your first meeting to see statistics and insights.
             </p>
             <Link

@@ -1,36 +1,41 @@
 
-import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { MeetingProvider } from "./context/MeetingContext";
 import Index from "./pages/Index";
 import Dashboard from "./pages/Dashboard";
 import AddMeeting from "./pages/AddMeeting";
 import Recommendations from "./pages/Recommendations";
 import NotFound from "./pages/NotFound";
+import { Toaster } from "./components/ui/toaster";
+import { useEffect } from "react";
 
-const queryClient = new QueryClient();
+function App() {
+  // Apply the saved theme on initial load or follow system preference
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("theme");
+    const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    
+    if (savedTheme === "dark" || (!savedTheme && systemPrefersDark)) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, []);
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <MeetingProvider>
-      <TooltipProvider>
+  return (
+    <Router>
+      <MeetingProvider>
+        <Routes>
+          <Route path="/" element={<Index />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/add-meeting" element={<AddMeeting />} />
+          <Route path="/recommendations" element={<Recommendations />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
         <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/add-meeting" element={<AddMeeting />} />
-            <Route path="/recommendations" element={<Recommendations />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
-      </TooltipProvider>
-    </MeetingProvider>
-  </QueryClientProvider>
-);
+      </MeetingProvider>
+    </Router>
+  );
+}
 
 export default App;
