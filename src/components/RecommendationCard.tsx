@@ -55,22 +55,27 @@ const RecommendationCard: React.FC<RecommendationCardProps> = ({ recommendation,
 
   return (
     <motion.div
-      className="recommendation-card"
+      className="recommendation-card magic-shimmer"
       variants={cardVariants}
       initial="hidden"
       animate="visible"
+      whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
     >
       <div className="flex items-start">
-        <div className="mt-0.5 p-2 rounded-full bg-primary/10 text-primary">
+        <div className="mt-0.5 p-2 rounded-full bg-primary/10 text-primary magic-pulse">
           {getIcon()}
         </div>
         <div className="ml-4 flex-1">
           <div className="flex items-center justify-between mb-2">
             <h3 className="recommendation-title">{recommendation.title}</h3>
-            <span className={`text-xs font-medium px-2 py-1 rounded-full ${getImpactColor()}`}>
+            <motion.span 
+              className={`text-xs font-medium px-2 py-1 rounded-full ${getImpactColor()}`}
+              whileHover={{ scale: 1.1 }}
+              transition={{ type: "spring", stiffness: 400, damping: 10 }}
+            >
               {recommendation.impact === "high" ? "High Impact" : 
                recommendation.impact === "medium" ? "Medium Impact" : "Low Impact"}
-            </span>
+            </motion.span>
           </div>
           <p className="recommendation-content">{recommendation.description}</p>
         </div>

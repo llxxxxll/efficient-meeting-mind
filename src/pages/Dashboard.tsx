@@ -23,6 +23,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { useToast } from "@/hooks/use-toast";
+import { motion } from "framer-motion";
 
 const Dashboard = () => {
   const { meetings, clearMeetings } = useMeetingContext();
@@ -44,13 +45,51 @@ const Dashboard = () => {
     });
   };
 
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        when: "beforeChildren",
+        staggerChildren: 0.2
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { 
+        type: "spring", 
+        stiffness: 100,
+        damping: 10
+      }
+    }
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <NavBar />
       <main className="page-container">
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8">
-          <h1 className="section-title mb-4 sm:mb-0">Meeting Dashboard</h1>
-          <div className="flex gap-3">
+        <motion.div 
+          className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          <motion.h1 
+            className="section-title mb-4 sm:mb-0 magic-sparkle"
+            variants={itemVariants}
+          >
+            Meeting Dashboard
+          </motion.h1>
+          <motion.div 
+            className="flex gap-3"
+            variants={itemVariants}
+          >
             <ExportButton />
             
             <Dialog>
@@ -85,22 +124,45 @@ const Dashboard = () => {
                 </DialogFooter>
               </DialogContent>
             </Dialog>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
-        <DashboardStats />
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          <DashboardStats />
+        </motion.div>
 
         {meetings.length > 0 && (
           <>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
-              <DurationChart stats={stats} />
-              <GoalChart stats={stats} />
-            </div>
+            <motion.div 
+              className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8"
+              variants={containerVariants}
+              initial="hidden"
+              animate="visible"
+            >
+              <motion.div variants={itemVariants} className="magic-float">
+                <DurationChart stats={stats} />
+              </motion.div>
+              <motion.div variants={itemVariants} className="magic-float" style={{ animationDelay: "1.5s" }}>
+                <GoalChart stats={stats} />
+              </motion.div>
+            </motion.div>
 
             {recommendations.length > 0 && (
-              <div className="mt-8">
-                <div className="flex justify-between items-center mb-4">
-                  <h2 className="subsection-title mb-0">Top Recommendations</h2>
+              <motion.div 
+                className="mt-8"
+                variants={containerVariants}
+                initial="hidden"
+                animate="visible"
+              >
+                <motion.div 
+                  className="flex justify-between items-center mb-4"
+                  variants={itemVariants}
+                >
+                  <h2 className="subsection-title mb-0 magic-sparkle">Top Recommendations</h2>
                   <Link 
                     to="/recommendations"
                     className="text-primary hover:text-primary/80 flex items-center text-sm"
@@ -108,8 +170,11 @@ const Dashboard = () => {
                     View all
                     <ArrowRight className="ml-1 h-4 w-4" />
                   </Link>
-                </div>
-                <div className="grid grid-cols-1 gap-4">
+                </motion.div>
+                <motion.div 
+                  className="grid grid-cols-1 gap-4"
+                  variants={itemVariants}
+                >
                   {recommendations.map((recommendation, index) => (
                     <RecommendationCard
                       key={recommendation.id}
@@ -117,30 +182,58 @@ const Dashboard = () => {
                       index={index}
                     />
                   ))}
-                </div>
-              </div>
+                </motion.div>
+              </motion.div>
             )}
 
-            <div className="mt-8">
-              <h2 className="subsection-title">Recent Meetings</h2>
-              <MeetingList />
-            </div>
+            <motion.div 
+              className="mt-8"
+              variants={containerVariants}
+              initial="hidden"
+              animate="visible"
+              transition={{ delay: 0.5 }}
+            >
+              <motion.h2 
+                className="subsection-title magic-sparkle" 
+                variants={itemVariants}
+              >
+                Recent Meetings
+              </motion.h2>
+              <motion.div variants={itemVariants}>
+                <MeetingList />
+              </motion.div>
+            </motion.div>
           </>
         )}
 
         {meetings.length === 0 && (
-          <div className="mt-8 text-center py-12 bg-white dark:bg-card rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm">
-            <h3 className="text-lg font-medium text-gray-900 dark:text-gray-100 mb-2">No meetings recorded yet</h3>
-            <p className="text-gray-600 dark:text-gray-300 mb-6">
-              Record your first meeting to see statistics and insights.
-            </p>
-            <Link
-              to="/add-meeting"
-              className="btn-primary"
+          <motion.div 
+            className="mt-8 text-center py-12 bg-white dark:bg-card rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm magic-glow"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            <motion.h3 
+              className="text-lg font-medium text-gray-900 dark:text-gray-100 mb-2"
+              variants={itemVariants}
             >
-              Add Your First Meeting
-            </Link>
-          </div>
+              No meetings recorded yet
+            </motion.h3>
+            <motion.p 
+              className="text-gray-600 dark:text-gray-300 mb-6"
+              variants={itemVariants}
+            >
+              Record your first meeting to see statistics and insights.
+            </motion.p>
+            <motion.div variants={itemVariants}>
+              <Link
+                to="/add-meeting"
+                className="btn-primary magic-pulse"
+              >
+                Add Your First Meeting
+              </Link>
+            </motion.div>
+          </motion.div>
         )}
       </main>
     </div>
