@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,7 +62,38 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				// Custom colors for the meeting efficiency app
+				efficiency: {
+					100: '#F0F4F8',
+					200: '#D9E2EC',
+					300: '#BCCCDC',
+					400: '#9FB3C8',
+					500: '#829AB1',
+					600: '#627D98',
+					700: '#486581',
+					800: '#334E68',
+					900: '#243B53',
+					950: '#102A43',
+				},
+				success: {
+					DEFAULT: '#34D399',
+					light: '#D1FAE5',
+				},
+				warning: {
+					DEFAULT: '#FBBF24',
+					light: '#FEF3C7',
+				},
+				error: {
+					DEFAULT: '#F87171',
+					light: '#FEE2E2',
 				}
+			},
+			boxShadow: {
+				'glass': '0 4px 30px rgba(0, 0, 0, 0.1)',
+				'glass-hover': '0 8px 32px rgba(0, 0, 0, 0.15)',
+				'card': '0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.1)',
+				'card-hover': '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -84,12 +116,41 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'fade-in': {
+					'0%': { opacity: '0' },
+					'100%': { opacity: '1' }
+				},
+				'fade-out': {
+					'0%': { opacity: '1' },
+					'100%': { opacity: '0' }
+				},
+				'slide-in': {
+					'0%': { transform: 'translateY(10px)', opacity: '0' },
+					'100%': { transform: 'translateY(0)', opacity: '1' }
+				},
+				'slide-out': {
+					'0%': { transform: 'translateY(0)', opacity: '1' },
+					'100%': { transform: 'translateY(10px)', opacity: '0' }
+				},
+				'scale-in': {
+					'0%': { transform: 'scale(0.95)', opacity: '0' },
+					'100%': { transform: 'scale(1)', opacity: '1' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
-			}
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'fade-in': 'fade-in 0.3s ease-out',
+				'fade-out': 'fade-out 0.3s ease-out',
+				'slide-in': 'slide-in 0.3s ease-out',
+				'slide-out': 'slide-out 0.3s ease-out',
+				'scale-in': 'scale-in 0.2s ease-out'
+			},
+			backdropFilter: {
+				'none': 'none',
+				'blur': 'blur(16px)',
+			},
 		}
 	},
 	plugins: [require("tailwindcss-animate")],
