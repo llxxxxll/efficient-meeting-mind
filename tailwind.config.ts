@@ -22,6 +22,14 @@ export default {
     },
     extend: {
       colors: {
+        // Custom colors as per user suggestion
+        "primary-blue": "#003366",
+        "secondary-gray": "#F5F5F5",
+        "accent-green": "#4CAF50",
+        "warning-orange": "#FFA726",
+        "text-dark": "#333333",
+        
+        // System colors
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -56,36 +64,17 @@ export default {
           foreground: "hsl(var(--card-foreground))",
         },
         // Add extra colors for the application
-        success: "#10b981",
-        error: "#ef4444",
-        purple: {
-          50: "#F5F3FF",
-          100: "#EDE9FE",
-          200: "#DDD6FE",
-          300: "#C4B5FD",
-          400: "#A78BFA",
-          500: "#8B5CF6",
-          600: "#7C3AED",
-          700: "#6D28D9",
-          800: "#5B21B6",
-          900: "#4C1D95",
-        },
-        pastel: {
-          green: "#F2FCE2",
-          yellow: "#FEF7CD",
-          orange: "#FEC6A1",
-          pink: "#FFDEE2",
-          peach: "#FDE1D3",
-          blue: "#D3E4FD",
-        },
+        success: "#4CAF50", // Updated to match accent green
+        error: "#FFA726", // Updated to match warning orange
+      },
+      fontFamily: {
+        sans: ["var(--font-sans)", "Open Sans", "Helvetica", ...fontFamily.sans],
+        heading: ["Roboto Bold", "Arial Black", ...fontFamily.sans],
       },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
-      },
-      fontFamily: {
-        sans: ["var(--font-sans)", ...fontFamily.sans],
       },
       keyframes: {
         "accordion-down": {

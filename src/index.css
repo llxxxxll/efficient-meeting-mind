@@ -5,74 +5,66 @@
 
 @layer base {
   :root {
-    --background: 210 50% 98%;
-    --foreground: 215 25% 27%;
+    /* Updated color scheme based on user preferences */
+    --background: 0 0% 96.1%; /* #F5F5F5 */
+    --foreground: 0 0% 20%; /* #333333 */
 
-    --card: 0 0% 100%;
-    --card-foreground: 215 25% 27%;
+    --card: 0 0% 100%; /* White */
+    --card-foreground: 0 0% 20%; /* #333333 */
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 215 25% 27%;
+    --popover: 0 0% 100%; /* White */
+    --popover-foreground: 0 0% 20%; /* #333333 */
 
-    --primary: 210 67% 43%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 210 100% 20%; /* #003366 */
+    --primary-foreground: 0 0% 100%; /* White */
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 215 25% 27%;
+    --secondary: 0 0% 96.1%; /* #F5F5F5 */
+    --secondary-foreground: 0 0% 20%; /* #333333 */
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215 25% 46.9%;
+    --muted: 0 0% 96.1%; /* #F5F5F5 */
+    --muted-foreground: 0 0% 45.1%; /* #737373 */
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 215 25% 27%;
+    --accent: 122 67% 35%; /* #4CAF50 */
+    --accent-foreground: 0 0% 100%; /* White */
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84.2% 60.2%; /* A muted red */
+    --destructive-foreground: 0 0% 100%; /* White */
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 215 25% 27%;
+    --border: 0 0% 90.2%; /* Light gray border */
+    --input: 0 0% 90.2%; /* Light gray input */
+    --ring: 210 100% 20%; /* #003366 */
 
     --radius: 0.75rem;
-
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
   .dark {
-    --background: 217 33% 17%;
-    --foreground: 210 40% 98%;
+    --background: 210 100% 15%; /* Darker blue */
+    --foreground: 0 0% 95%; /* Off-white */
 
-    --card: 217 33% 20%;
-    --card-foreground: 210 40% 98%;
+    --card: 210 100% 20%; /* Dark blue card */
+    --card-foreground: 0 0% 95%; /* Off-white */
 
-    --popover: 217 33% 20%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 210 100% 20%; /* Dark blue */
+    --popover-foreground: 0 0% 95%; /* Off-white */
 
-    --primary: 210 67% 43%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 210 100% 25%; /* #003366 slightly lighter */
+    --primary-foreground: 0 0% 100%; /* White */
 
-    --secondary: 217 33% 25%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 210 100% 25%; /* Darker blue secondary */
+    --secondary-foreground: 0 0% 95%; /* Off-white */
 
-    --muted: 217 33% 25%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 210 100% 25%; /* Darker blue muted */
+    --muted-foreground: 0 0% 65.1%; /* Gray text */
 
-    --accent: 217 33% 25%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 122 67% 35%; /* #4CAF50 */
+    --accent-foreground: 0 0% 100%; /* White */
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%; /* Darker red */
+    --destructive-foreground: 0 0% 95%; /* Off-white */
 
-    --border: 217 33% 25%;
-    --input: 217 33% 25%;
-    --ring: 212.7 26.8% 83.9%;
+    --border: 210 100% 25%; /* Darker border */
+    --input: 210 100% 25%; /* Darker input */
+    --ring: 0 0% 83.9%; /* Light gray ring */
   }
 }
 
@@ -82,9 +74,15 @@
   }
 
   body {
-    @apply bg-background text-foreground antialiased;
+    @apply bg-secondary-gray text-text-dark antialiased;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    font-family: 'Open Sans', Helvetica, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Roboto Bold', 'Arial Black', sans-serif;
+    @apply font-bold;
   }
 
   html, body {
@@ -94,11 +92,11 @@
 
 @layer components {
   .glass-card {
-    @apply bg-white bg-opacity-70 backdrop-blur-lg border border-white border-opacity-30 shadow-glass rounded-xl transition-all duration-300 ease-in-out;
+    @apply bg-white shadow-card rounded-xl transition-all duration-300 ease-in-out border border-gray-100;
   }
   
   .glass-card:hover {
-    @apply shadow-glass-hover transform -translate-y-1;
+    @apply shadow-card-hover transform -translate-y-1;
   }
 
   .card-hover {
@@ -110,11 +108,11 @@
   }
 
   .section-title {
-    @apply text-2xl sm:text-3xl font-medium text-gray-900 mb-6;
+    @apply text-2xl sm:text-3xl font-bold text-primary-blue mb-6;
   }
   
   .subsection-title {
-    @apply text-xl font-medium text-gray-800 mb-4;
+    @apply text-xl font-bold text-primary-blue mb-4;
   }
 
   .fade-in {
@@ -180,19 +178,19 @@
 }
 
 .form-label {
-  @apply block text-sm font-medium text-gray-800 mb-1;
+  @apply block text-sm font-medium text-text-dark mb-1;
 }
 
 .form-input {
-  @apply w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition duration-200;
+  @apply w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-blue focus:border-transparent transition duration-200;
 }
 
 .form-textarea {
-  @apply w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition duration-200 min-h-[100px];
+  @apply w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-blue focus:border-transparent transition duration-200 min-h-[100px];
 }
 
 .form-select {
-  @apply w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition duration-200;
+  @apply w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-blue focus:border-transparent transition duration-200;
 }
 
 /* Utility classes for button variations */
@@ -201,31 +199,31 @@
 }
 
 .btn-primary {
-  @apply btn bg-primary text-white hover:bg-primary/90 focus:ring-primary;
+  @apply btn bg-primary-blue text-white hover:bg-primary-blue/90 focus:ring-primary-blue;
 }
 
 .btn-secondary {
-  @apply btn bg-white text-gray-800 border-gray-200 hover:bg-gray-50 focus:ring-gray-500;
+  @apply btn bg-white text-text-dark border-gray-200 hover:bg-gray-50 focus:ring-gray-500;
 }
 
 .btn-success {
-  @apply btn bg-success text-white hover:bg-success/90 focus:ring-success;
+  @apply btn bg-accent-green text-white hover:bg-accent-green/90 focus:ring-accent-green;
 }
 
-.btn-error {
-  @apply btn bg-error text-white hover:bg-error/90 focus:ring-error;
+.btn-warning {
+  @apply btn bg-warning-orange text-white hover:bg-warning-orange/90 focus:ring-warning-orange;
 }
 
 .btn-outline {
-  @apply btn bg-transparent border border-gray-200 text-gray-800 hover:bg-gray-50;
+  @apply btn bg-transparent border border-gray-200 text-text-dark hover:bg-gray-50;
 }
 
 .btn-ghost {
-  @apply btn bg-transparent shadow-none hover:bg-gray-100 text-gray-800;
+  @apply btn bg-transparent shadow-none hover:bg-gray-100 text-text-dark;
 }
 
 .btn-icon {
-  @apply p-2 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-colors duration-200 inline-flex items-center justify-center;
+  @apply p-2 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-blue transition-colors duration-200 inline-flex items-center justify-center;
 }
 
 /* Chart container styles */
@@ -243,7 +241,7 @@
 }
 
 .stat-value {
-  @apply text-3xl font-semibold text-gray-900;
+  @apply text-3xl font-semibold text-primary-blue;
 }
 
 .stat-description {
@@ -256,11 +254,24 @@
 }
 
 .recommendation-title {
-  @apply text-lg font-medium text-gray-900 mb-2;
+  @apply text-lg font-medium text-primary-blue mb-2;
 }
 
 .recommendation-content {
-  @apply text-sm text-gray-700;
+  @apply text-sm text-text-dark;
+}
+
+/* Alert styles */
+.alert-success {
+  @apply bg-accent-green/10 text-accent-green border border-accent-green/20 rounded-lg px-4 py-3;
+}
+
+.alert-warning {
+  @apply bg-warning-orange/10 text-warning-orange border border-warning-orange/20 rounded-lg px-4 py-3;
+}
+
+.alert-error {
+  @apply bg-red-100 text-red-700 border border-red-200 rounded-lg px-4 py-3;
 }
 
 /* Scrollbar styling */
