@@ -1,8 +1,8 @@
 
 import { Link, useLocation } from "react-router-dom";
 import { Clock, Moon, Sun } from "lucide-react";
-import { useEffect, useState } from "react";
 import { Button } from "./ui/button";
+import { useTheme } from "../context/ThemeContext";
 import {
   Tooltip,
   TooltipContent,
@@ -12,27 +12,8 @@ import {
 
 const NavBar = () => {
   const location = useLocation();
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
-  // Initialize dark mode state based on document class on mount
-  useEffect(() => {
-    const isDark = document.documentElement.classList.contains("dark");
-    setIsDarkMode(isDark);
-  }, []);
-
-  // Toggle dark mode
-  const toggleDarkMode = () => {
-    const newDarkMode = !isDarkMode;
-    setIsDarkMode(newDarkMode);
-    
-    if (newDarkMode) {
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-    }
-  };
+  const { theme, toggleTheme } = useTheme();
+  const isDarkMode = theme === "dark";
 
   return (
     <nav className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
@@ -53,7 +34,7 @@ const NavBar = () => {
                   <Button 
                     variant="ghost" 
                     size="icon" 
-                    onClick={toggleDarkMode}
+                    onClick={toggleTheme}
                     className="hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
                     {isDarkMode ? (
