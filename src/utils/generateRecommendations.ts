@@ -35,7 +35,7 @@ export const generateRecommendations = (meetings: Meeting[]): Recommendation[] =
   if (highParticipantPercentage > 30) {
     recommendations.push({
       id: crypto.randomUUID(),
-      title: "Implement the "Two-Pizza Rule"",
+      title: "Implement the \"Two-Pizza Rule\"",
       description: "Over 30% of your meetings have more than 7 participants. Try applying Amazon's 'Two-Pizza Rule': if you need more than two pizzas to feed the group, the meeting is too large.",
       category: 'participants',
       impact: 'medium'
@@ -118,7 +118,7 @@ export const generateRecommendations = (meetings: Meeting[]): Recommendation[] =
   // General recommendations
   recommendations.push({
     id: crypto.randomUUID(),
-    title: "Implement a "no-meeting day"",
+    title: "Implement a \"no-meeting day\"",
     description: "Designate one day per week as meeting-free to allow uninterrupted work time for focused productivity.",
     category: 'general',
     impact: 'medium'
