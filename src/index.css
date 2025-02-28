@@ -94,11 +94,11 @@
 
 @layer components {
   .glass-card {
-    @apply bg-white bg-opacity-70 backdrop-blur-lg border border-white border-opacity-20 shadow-glass rounded-xl transition-all duration-300 ease-in-out;
+    @apply bg-white bg-opacity-70 backdrop-blur-lg border border-white border-opacity-30 shadow-glass rounded-xl transition-all duration-300 ease-in-out;
   }
   
   .glass-card:hover {
-    @apply shadow-glass-hover;
+    @apply shadow-glass-hover transform -translate-y-1;
   }
 
   .card-hover {
