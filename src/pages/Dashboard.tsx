@@ -11,11 +11,23 @@ import ExportButton from "../components/ExportButton";
 import { generateRecommendations } from "../utils/generateRecommendations";
 import RecommendationCard from "../components/RecommendationCard";
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Trash2 } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { useToast } from "@/hooks/use-toast";
 
 const Dashboard = () => {
-  const { meetings } = useMeetingContext();
+  const { meetings, clearMeetings } = useMeetingContext();
   const stats = useMemo(() => calculateStats(meetings), [meetings]);
+  const { toast } = useToast();
   
   // Get top 3 recommendations
   const recommendations = useMemo(
@@ -23,13 +35,57 @@ const Dashboard = () => {
     [meetings]
   );
 
+  const handleReset = () => {
+    clearMeetings();
+    toast({
+      title: "Success",
+      description: "All meeting data has been reset",
+      variant: "default",
+    });
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <NavBar />
       <main className="page-container">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8">
           <h1 className="section-title mb-4 sm:mb-0">Meeting Dashboard</h1>
-          <ExportButton />
+          <div className="flex gap-3">
+            <ExportButton />
+            
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button variant="outline" className="border-red-300 text-red-500 hover:bg-red-50">
+                  <Trash2 className="mr-2 h-4 w-4" />
+                  Reset Data
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="sm:max-w-md">
+                <DialogHeader>
+                  <DialogTitle>Reset Meeting Data</DialogTitle>
+                  <DialogDescription>
+                    Are you sure you want to reset all meeting data? This action cannot be undone.
+                  </DialogDescription>
+                </DialogHeader>
+                <DialogFooter className="sm:justify-start">
+                  <Button
+                    type="button"
+                    variant="destructive" 
+                    onClick={handleReset}
+                  >
+                    Yes, Reset All Data
+                  </Button>
+                  <Button
+                    type="button"
+                    variant="outline"
+                    className="ml-3"
+                  >
+                    Cancel
+                  </Button>
+                </DialogFooter>
+              </DialogContent>
+            </Dialog>
+          </div>
         </div>
 
         <DashboardStats />
