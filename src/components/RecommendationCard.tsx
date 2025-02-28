@@ -55,14 +55,14 @@ const RecommendationCard: React.FC<RecommendationCardProps> = ({ recommendation,
 
   return (
     <motion.div
-      className="recommendation-card magic-shimmer"
+      className="recommendation-card"
       variants={cardVariants}
       initial="hidden"
       animate="visible"
       whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
     >
       <div className="flex items-start">
-        <div className="mt-0.5 p-2 rounded-full bg-primary/10 text-primary magic-pulse">
+        <div className="mt-0.5 p-2 rounded-full bg-primary/10 text-primary">
           {getIcon()}
         </div>
         <div className="ml-4 flex-1">
